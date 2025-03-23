@@ -49,6 +49,7 @@ header:hover {
   font-size: 1.3rem;
   letter-spacing: 0.1rem;
   text-decoration: none;
+  color: white;
 }
 .links:visited {
   color: white;
