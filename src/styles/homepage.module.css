@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=Tektur:wght@400;700&display=swap");
+@media (max-width: 750px) {
+  header {
+    flex-direction: column !important;
+  }
+}
+header {
+  background-color: #00afefe2;
+  color: rgb(255, 255, 255);
+  min-height: 8vh;
+  display: flex;
+  align-items: center;
+  text-indent: 1vw;
+  font-size: 2rem;
+  font-family: "Tektur", sans-serif;
+  letter-spacing: 0.5rem;
+  justify-content: space-between;
+  padding-top: 1vw;
+  padding-bottom: 1vw;
+  user-select: none;
+  margin: none !important;
+  border-radius: 5px;
+  transition: background-color ease-in 0.5s;
+}
+p {
+  font-size: 1.5rem;
+  line-height: 3rem;
+}
+header:hover {
+  background-color: #00afef;
+}
+.homepageWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 50vh;
+}
+.title {
+  font-size: 2.2rem;
+  display: flex;
+  align-items: center;
+}
+.titleLogo {
+  min-width: 4rem;
+}
+.links {
+  display: flex;
+  margin-right: 1rem;
+  font-size: 1.3rem;
+  letter-spacing: 0.1rem;
+  text-decoration: none;
+}
+.links:visited {
+  color: white;
+}
+.linkBox {
+  display: flex;
+}
+.links > h3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  background-color: transparent;
+  transition: transform ease-in 0.3s, color ease-in 0.3s,
+    text-decoration ease-in 0.5s;
+  user-select: none;
+}
+.links > h3:hover {
+  transform: scale(1.1);
+  text-decoration: underline;
+}
+.links > h3:active {
+  transform: scale(0.1);
+}
+body {
+  background-color: #121212;
+}
+.about {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #00afef24;
+  max-width: 1280px;
+  border: 2px solid #00aeef;
+  margin-top: 5rem;
+  padding: 2rem;
+  border-radius: 10px;
+  color: white;
+  font-family: "Tektur", sans-serif;
+  transition: background-color ease-in 0.5s;
+}
+.about > h2 {
+  font-size: 2rem;
+  text-decoration: underline;
+}
+.about:hover {
+  background-color: #00afefce;
+}
+.titleIcon {
+  min-width: 1.8rem;
+}
