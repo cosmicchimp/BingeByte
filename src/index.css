@@ -13,3 +13,6 @@ header {
     radial-gradient(2px 2px at 60px 60px, rgba(255, 255, 255, 0.2), transparent);
   background-size: 100px 100px; /* Adjust dot spacing */
 }
+body {
+  overflow-x: hidden;
+}

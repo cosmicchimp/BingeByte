@@ -1,0 +1,19 @@
+.checkoutWrapper {
+  background-color: #00afefb4;
+  color: white;
+  width: 70vw;
+  display: flex;
+  margin: 0 auto 0 auto;
+  border-radius: 5px;
+  padding: 2vw;
+  margin-top: 5vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid;
+  border-color: rgb(31, 56, 165);
+  transition: background-color 0.3s ease-in;
+}
+.checkoutWrapper:hover {
+  background-color: #00afef;
+}

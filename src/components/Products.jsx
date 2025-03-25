@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
 import styles from "../styles/products.module.css";
-export default function Products() {
+export default function Products({ updateCheckout }) {
   const [productData, updateProductData] = useState([]);
   const [isLoading, updateLoading] = useState(true);
   const [hoveredProductId, setHoveredProductId] = useState(null);
   const [isClicked, updateClicked] = useState(false);
   const [clickedData, updateClickedData] = useState([]);
+  const [popupQuantity, updateQuantity] = useState(1);
+  const [shoppingBag, updateBag] = useState([]);
+
   // Fetch product data
   useEffect(() => {
     fetch(
@@ -23,11 +26,19 @@ export default function Products() {
   //card modal click function
   function cardClick(title, price, desc, image) {
     updateClickedData([title, price, desc, image]);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // Smooth scrolling
+    });
     updateClicked(true);
   }
   //card exit function
   function exitModal() {
     updateClicked(false);
+  }
+  function handleAddToCart(product, price, quantity) {
+    console.log(`Bag: ${quantity} ${product}: ${quantity * price}`);
+    updateQuantity(1);
   }
   return (
     <>
@@ -86,13 +97,38 @@ export default function Products() {
               alt=""
             />
             <div className={styles.modalDesc}>{clickedData[2]}</div>
-            <div className={styles.modalPrice}>{clickedData[1]}</div>
-            <button>Add</button>
+            <div className={styles.modalPrice}>${clickedData[1]}</div>
+            <div className={styles.buttonBox}>
+              {" "}
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  handleAddToCart(
+                    clickedData[0],
+                    clickedData[1],
+                    popupQuantity
+                  );
+                }}
+              >
+                <input
+                  className={styles.quantity}
+                  type="number"
+                  min={1}
+                  max={25}
+                  required
+                  value={popupQuantity}
+                  onChange={(e) => updateQuantity(e.target.value)} // Ensure input updates state
+                />
+                <button type="submit" className={styles.addButton}>
+                  Add
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       )}
       <div className={styles.productWrapper}>
-        {isLoading && <h2>Loading...</h2>}
+        {isLoading && <h2 style={{ color: "white" }}>Loading...</h2>}
         {!isLoading &&
           productData.map((product) => {
             // Determine which image to show

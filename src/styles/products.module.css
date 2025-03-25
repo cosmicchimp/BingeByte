@@ -2,6 +2,15 @@
 * {
   font-family: "Tektur", sans-serif;
 }
+@media (min-width: 1000px) {
+  .productImage {
+    object-fit: cover !important;
+    /* width: clamp(10vw, 20vw, 25vw) !important; */
+  }
+  .popupModal {
+    position: absolute !important;
+  }
+}
 .title {
   color: white;
   text-align: center;
@@ -9,8 +18,8 @@
   margin-bottom: 2rem;
 }
 .productImage {
-  max-width: 10vw;
-  max-height: 8rem;
+  object-fit: contain;
+  max-height: 9vw;
 }
 .productWrapper {
   display: flex;
@@ -84,6 +93,24 @@
   line-height: 2.5rem;
   margin-top: 1rem;
 }
+.modalPrice {
+  font-weight: 600;
+  padding: 1vw;
+}
+.addButton {
+  padding: 0.3vw;
+  padding-left: 1vw;
+  padding-right: 1vw;
+  font-weight: 600;
+  border-radius: 5px;
+}
+.addButton:active {
+  background-color: greenyellow;
+  border-radius: 5px;
+}
+.quantity {
+  padding: 0.3vw;
+}
 .exitButton {
   margin-left: auto;
 }
@@ -92,7 +119,9 @@
   min-width: clamp(1vw, 1.5vw, 2.5vw);
   transition: transform ease-in 0.3s;
 }
-
+.buttonBox {
+  margin-top: 1vw;
+}
 .svgButton:hover {
   transform: scale(1.1);
 }
