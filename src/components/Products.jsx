@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import styles from "../styles/products.module.css";
-export default function Products({ updateCheckout }) {
+import { shopContext } from "../App.jsx";
+export default function Products() {
   const [productData, updateProductData] = useState([]);
   const [isLoading, updateLoading] = useState(true);
   const [hoveredProductId, setHoveredProductId] = useState(null);
@@ -8,7 +9,7 @@ export default function Products({ updateCheckout }) {
   const [clickedData, updateClickedData] = useState([]);
   const [popupQuantity, updateQuantity] = useState(1);
   const [shoppingBag, updateBag] = useState([]);
-
+  const { updateCheckout } = useContext(shopContext);
   // Fetch product data
   useEffect(() => {
     fetch(
@@ -38,6 +39,8 @@ export default function Products({ updateCheckout }) {
   }
   function handleAddToCart(product, price, quantity) {
     console.log(`Bag: ${quantity} ${product}: ${quantity * price}`);
+    let totalPrice = quantity * price;
+    updateCheckout((prev) => [...prev, { quantity, product, totalPrice }]);
     updateQuantity(1);
   }
   return (
