@@ -37,10 +37,13 @@ export default function Products() {
   function exitModal() {
     updateClicked(false);
   }
-  function handleAddToCart(product, price, quantity) {
+  function handleAddToCart(product, price, desc, quantity) {
     console.log(`Bag: ${quantity} ${product}: ${quantity * price}`);
     let totalPrice = quantity * price;
-    updateCheckout((prev) => [...prev, { quantity, product, totalPrice }]);
+    updateCheckout((prev) => [
+      ...prev,
+      { product, desc, quantity, totalPrice },
+    ]);
     updateQuantity(1);
   }
   return (
@@ -109,6 +112,7 @@ export default function Products() {
                   handleAddToCart(
                     clickedData[0],
                     clickedData[1],
+                    clickedData[2],
                     popupQuantity
                   );
                 }}
