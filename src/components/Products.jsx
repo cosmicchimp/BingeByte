@@ -8,7 +8,6 @@ export default function Products() {
   const [isClicked, updateClicked] = useState(false);
   const [clickedData, updateClickedData] = useState([]);
   const [popupQuantity, updateQuantity] = useState(1);
-  const [shoppingBag, updateBag] = useState([]);
   const { updateCheckout } = useContext(shopContext);
   // Fetch product data
   useEffect(() => {
@@ -37,12 +36,12 @@ export default function Products() {
   function exitModal() {
     updateClicked(false);
   }
-  function handleAddToCart(product, price, desc, quantity) {
+  function handleAddToCart(product, price, desc, image, quantity) {
     console.log(`Bag: ${quantity} ${product}: ${quantity * price}`);
     let totalPrice = quantity * price;
     updateCheckout((prev) => [
       ...prev,
-      { product, desc, quantity, totalPrice },
+      { product, image, desc, quantity, price },
     ]);
     updateQuantity(1);
   }
@@ -57,8 +56,7 @@ export default function Products() {
               className={styles.svgButton}
               viewBox="0 -0.5 17 17"
               version="1.1"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="#000000"
+              fill="black"
             >
               <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
               <g
@@ -68,15 +66,14 @@ export default function Products() {
               ></g>
               <g id="SVGRepo_iconCarrier">
                 {" "}
-                <title>970</title> <defs> </defs>{" "}
                 <g
                   stroke="none"
                   stroke-width="1"
-                  fill="none"
+                  fill="black"
                   fill-rule="evenodd"
                 >
                   {" "}
-                  <g transform="translate(1.000000, 0.000000)" fill="#434343">
+                  <g transform="translate(1.000000, 0.000000)" fill="black">
                     {" "}
                     <path
                       d="M13.646,2.371 C10.535,-0.739 5.469,-0.74 2.358,2.371 C-0.753,5.483 -0.752,10.548 2.358,13.66 C5.469,16.77 10.534,16.771 13.646,13.66 C16.758,10.547 16.757,5.483 13.646,2.371 L13.646,2.371 Z M3.587,12.431 C1.148,9.993 1.146,6.028 3.58,3.594 C6.014,1.159 9.979,1.162 12.418,3.6 C14.856,6.038 14.857,10.004 12.424,12.438 C9.988,14.872 6.024,14.869 3.587,12.431 L3.587,12.431 Z"
@@ -113,6 +110,7 @@ export default function Products() {
                     clickedData[0],
                     clickedData[1],
                     clickedData[2],
+                    clickedData[3],
                     popupQuantity
                   );
                 }}

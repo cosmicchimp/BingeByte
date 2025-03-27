@@ -25,6 +25,8 @@ header {
 p {
   font-size: 1.5rem;
   line-height: 3rem;
+  margin-bottom: 1.5vw;
+  margin-top: 1.5vw;
 }
 header:hover {
   background-color: #00afef;

@@ -2,11 +2,12 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
-import Header from "./components/Header";
+import App, { shopContext } from "./App.jsx";
 import Homepage from "./components/Homepage.jsx";
 import Products from "./components/Products.jsx";
 import Checkout from "./components/Checkout.jsx";
-import App from "./App.jsx";
+import { useState } from "react";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -18,6 +19,19 @@ const router = createBrowserRouter([
     ],
   },
 ]);
+
+function Root() {
+  const [checkoutCart, updateCheckout] = useState([]);
+
+  return (
+    <shopContext.Provider value={{ checkoutCart, updateCheckout }}>
+      <RouterProvider router={router} />
+    </shopContext.Provider>
+  );
+}
+
 createRoot(document.getElementById("root")).render(
-  <RouterProvider router={router} />
+  <StrictMode>
+    <Root />
+  </StrictMode>
 );
